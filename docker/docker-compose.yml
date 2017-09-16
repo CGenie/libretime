@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  #postgres:
+  #  image: postgres:10-alpine
+  #  volumes:
+  #    - postgres-data:/var/lib/postgresql/data
+  #  environment:
+  #    POSTGRES_USER: airtime
+  #    POSTGRES_PASSWORD: airtime
+  #    POSTGRES_DB: airtime
+
+  libretime:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - libretime-stor:/srv/airtime/stor
+      - libretime-watch:/srv/airtime/watch
+    #links:
+    #  - postgres
+    ports:
+      - "8000:8000"
+      - "8001:80"
+
+volumes:
+  postgres-data: {}
+  libretime-stor: {}
+  libretime-watch: {}

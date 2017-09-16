@@ -146,7 +146,9 @@ function systemInitDetect() {
       *upstart*) has_upstart_init=true; verbose "Detected init system type: Upstart" ;;
       *sysvinit*) has_systemv_init=true; verbose "Detected init system type: System V" ;;
       *) echo "ERROR: Unable to detect init system using package or path of PID=1 process!" >&2
-         exit 1
+         echo "Using upstart as default" >&2
+         has_upstart_init=true
+         #exit 1
          ;;
     esac
     return 0
